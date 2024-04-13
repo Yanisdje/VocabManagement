@@ -2,6 +2,18 @@ public class DoublyLinkedList {
     private Node head = null;
     private Node tail = null;
 
+    private class Node {
+        Node next;
+        Node prev;
+        Vocab vocab;
+
+        Node(Vocab vocab) {
+            this.vocab = vocab;
+            this.prev = null;
+            this.next = null;
+        }
+    }
+
     public DoublyLinkedList() {
     }
 
@@ -80,16 +92,26 @@ public class DoublyLinkedList {
 
     }
 
-    private class Node {
-        Node next;
-        Node prev;
-        Vocab vocab;
-
-        Node(Vocab vocab) {
-            this.vocab = vocab;
-            this.prev = null;
-            this.next = null;
+    public void removeNode(Node currentNode){
+        if(currentNode == null){
+            System.out.println("There is no topic!");
+        }
+        else{
+            currentNode.next.prev = currentNode.prev;
+            currentNode.prev.next = currentNode.next;
         }
     }
+
+    /*
+    2 (done)
+    3 (done)
+    4 (done)
+    5 ....
+    6 ....
+    7 ....
+    8 ....
+    9 ....
+     */
+
 }
 
