@@ -71,6 +71,28 @@ public class SinglyLinkedList {
         System.out.println("Word is still not found to be replaced!");
     }
 
+    public void printList(){
+        Node temp = head;
+
+        while(temp!=null){
+            System.out.println("Node " + temp.word);
+
+            temp = temp.next;
+        }
+    }
+
+    public boolean findWord(String word){
+        Node temp = head;
+
+        while(temp!=null){
+            if(temp.word.equals(word)){
+                return true;
+            }
+            temp=temp.next;
+        }
+        return false;
+    }
+
 
 
 }

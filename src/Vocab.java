@@ -1,17 +1,12 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 import java.util.Objects;
 
 public class Vocab {
     private String topic;
     private SinglyLinkedList words;
 
-    public Vocab(String topic) {
+    public Vocab(String topic, SinglyLinkedList words) {
         this.topic = topic;
-        this.words = new SinglyLinkedList();
+        this.words = words;
     }
 
     public String getTopic() {
@@ -21,6 +16,10 @@ public class Vocab {
     public void setTopic(String topic) {
         this.topic = topic;
     }
+    public SinglyLinkedList getWords() {
+        return this.words;
+    }
+
 
     @Override
     public boolean equals(Object o) {

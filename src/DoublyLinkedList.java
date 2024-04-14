@@ -28,19 +28,29 @@ public class DoublyLinkedList {
 
         this.tail = vocabNode;
     }
+    //Find vocab, then specify the words (sll). Next, edit the sll using its methods. so now go and make the methods for sll
+    public Vocab findVocab(String topic){
+        Node current=head;
 
-    public Node findNode(Vocab vocab){
-                Node current = head;
-
-                while(current != null){
-                    if(current.vocab.equals(vocab)){
-                        return current;
-                    }
-                    current = current.next;
+        while(current!=null){
+            if(current.vocab.getTopic().equals(topic) && current.vocab!=null){
+                return current.vocab;
+            }
+            current=current.next;
         }
         return null;
     }
+    public Node findNode(String topic){
+        Node current=head;
 
+        while(current!=null){
+            if(current.vocab.getTopic().equals(topic) && current.vocab!=null){
+                return current;
+            }
+            current=current.next;
+        }
+        return null;
+    }
     public void addToStart(Vocab vocab) {
         Node vocabNode = new Node(vocab);
         if (this.head != null) {
@@ -52,7 +62,8 @@ public class DoublyLinkedList {
         this.head = vocabNode;
     }
 
-    public void addAfter(Node prevNode, Vocab vocab) {
+    public void addAfter(String topic, Vocab vocab) {
+        Node prevNode = findNode(topic);
         if (prevNode == null) {
             System.out.println("There is no topic.");
         } else {
@@ -68,7 +79,8 @@ public class DoublyLinkedList {
 
     }
 
-    public void addBefore(Node nextNode, Vocab vocab) {
+    public void addBefore(String topic, Vocab vocab) {
+        Node nextNode = findNode(topic);
         if (nextNode == null) {
             System.out.println("There is no topic.");
         } else {
@@ -89,10 +101,10 @@ public class DoublyLinkedList {
         for(Node temp = this.head; temp != null; temp = temp.next) {
             System.out.println("Topic: " + temp.vocab.getTopic());
         }
-
     }
 
-    public void removeNode(Node currentNode){
+    public void removeNode(String topic){
+        Node currentNode = findNode(topic);
         if(currentNode == null){
             System.out.println("There is no topic!");
         }
@@ -102,13 +114,29 @@ public class DoublyLinkedList {
         }
     }
 
+    public String searchWord(String word){
+        Node current = head;
+        String found = "Word found!";
+
+        while(current!=null){
+            if((current.vocab.getWords().findWord(word))){
+                return found;
+            }
+            current=current.next;
+        }
+        return null;
+    }
+
+
+
     /*
+    1 (done)
     2 (done)
     3 (done)
     4 (done)
-    5 ....
-    6 ....
-    7 ....
+    5 (done)
+    6 (done)
+    7 (done)
     8 ....
     9 ....
      */

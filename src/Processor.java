@@ -6,30 +6,48 @@ import java.io.IOException;
 public class Processor {
 
 
-    public static void loadFromFile(String fileName) {
-        //this would act like a reader...
-        DoublyLinkedList dll = new DoublyLinkedList();
-        try{
+    public static void loadFromFile(String fileName, DoublyLinkedList dll) {
+        try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
-            String line;
-            while((line = br.readLine())!=null){
-                if(line.startsWith("#")){
-                    String topic = line;
-                    Vocab newVocab = new Vocab(topic);
+            String topicLine;
+            String vocabLine;
+            while ((topicLine = br.readLine()) != null) {
+                if (topicLine.startsWith("#")) {
+                    SinglyLinkedList sll = new SinglyLinkedList();
+                    while ((vocabLine = br.readLine()) != null && !vocabLine.isEmpty()) {
+                        sll.add(vocabLine);
+                    }
+                    Vocab newVocab = new Vocab(topicLine, sll);
                     dll.add(newVocab);
-                    dll.displayList();
-                }
-                if(line.isEmpty()){
-                    System.out.println("BLANK");
                 }
             }
-
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            br.close(); // Close the BufferedReader to release resources
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    public static void main_menu(){
+        System.out.println("===========================\n" +
+                "Vocabulary Control Center\n" +
+                "===========================\n" +
+                "1 browse a topic\n" +
+                "2 insert a new topic before another one\n" +
+                "3 insert a new topic after another one\n" +
+                "4 remove a topic\n" +
+                "5 modify a topic\n" +
+                "6 search topics for a word\n" +
+                "7 load from a file\n" +
+                "8 show all words starting with a given letter\n" +
+                "9 save to file\n" +
+                "0 exit\n" +
+                "===========================\n" +
+                "Enter Your Choice:\n");
+    }
+
+//    public static void menu_1(){
+//        System.out.println("");
+//    }
+
+
 }
