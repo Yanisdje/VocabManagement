@@ -76,7 +76,6 @@ public class DoublyLinkedList {
                 vocabNode.next.prev = vocabNode;
             }
         }
-
     }
 
     public void addBefore(String topic, Vocab vocab) {

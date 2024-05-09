@@ -93,6 +93,10 @@ public class SinglyLinkedList {
         return false;
     }
 
+    public void reverse_iteratively(){
+
+    }
+
 
 
 }

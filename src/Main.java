@@ -27,6 +27,14 @@ public class Main {
         System.out.println(dll.searchWord("Red"));
         coloursVocab.getWords().printList();
 
+
+        int [] AA = {1,2,3};
+        boolean done=true;
+
+        for(int i=0; i<AA.length && !done; i++){
+            System.out.println(AA[i]);
+        }
+
         //dll.displayList();
         //words.printList();
 
